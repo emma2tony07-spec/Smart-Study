@@ -1,0 +1,351 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #111;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Add Course Button */
+.add-course {
+  height: 50px;
+  width: 40%;
+  max-width: 400px;
+  background-color: maroon;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  margin-bottom: 20px;
+  position: absolute;
+  left: 10px;
+}
+.add-course:hover {
+  background-color: #a04545;
+  transform: scale(1.02);
+}
+
+.analytics-button {
+  height: 50px;
+  width: 15%;
+  max-width: 400px;
+  background-color: transparent;
+  color: maroon;
+  border: none;
+  border-radius: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  margin-bottom: 20px;
+  position: absolute;
+  right: 20px;
+}
+
+/* Analytics Menu Container */
+.analytics-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background: #222;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%); /* Start hidden off-screen to the right */
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* When menu is open */
+.analytics-menu.open {
+  transform: translateX(0); /* Slide in from right to left */
+}
+
+/* Menu content styling */
+.analytics-menu-content {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Optional overlay */
+.analytics-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.analytics-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+/* Courses Container */
+#courses-container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 90px;
+}
+
+/* Course Card */
+.course-card {
+  background-color: transparent;
+  border: 3px solid maroon;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.course-header h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+.course-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 1.4rem;
+  color: #ccc;
+}
+.course-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.timer {
+  font-size: 2rem;
+  font-family: monospace;
+  background: #222;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.start-btn {
+  height: 40px;
+  width: 100px;
+  background-color: maroon;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.start-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.start-btn:not(:disabled):hover {
+  background-color: #a04545;
+}
+
+/* Dialogs */
+.dialog {
+  background-color: #111;
+  color: white;
+  border: 2px solid maroon;
+  border-radius: 15px;
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+.dialog::backdrop {
+  background: rgba(0,0,0,0.8);
+}
+.close-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: maroon;
+}
+.close-icon:hover {
+  color: #a04545;
+}
+.dialog h3 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 2.2rem;
+}
+.dialog-input {
+  width: 100%;
+  height: 45px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid maroon;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin: 10px 0 20px;
+  font-size: 1.6rem;
+  outline: none;
+}
+.dialog-input:focus {
+  border-color: #a04545;
+}
+.choice-radio {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.choice-radio span {
+  margin-right: 10px;
+}
+.choice-radio label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.number-input {
+  margin: 15px 0;
+}
+
+.submit-btn:hover {
+  background-color: #a04545;
+}
+
+/* Course Dialog specific */
+.course-dialog {
+  max-width: 700px;
+  width: 95%;
+}
+.chapters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: center;
+}
+.chapter-btn {
+  background-color: transparent;
+  color: white;
+  border: 2px solid maroon;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.chapter-btn:hover {
+  background-color: maroon;
+}
+.chapter-btn.active {
+  background-color: maroon;
+}
+.summary-section {
+  border-top: 2px solid maroon;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.summary-text, .questions-text {
+  background-color: #222;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px 0;
+  white-space: pre-wrap;
+}
+#answer-input {
+  width: 100%;
+  background-color: #222;
+  color: white;
+  border: 2px solid maroon;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1.4rem;
+  margin: 10px 0;
+  resize: vertical;
+}
+#answer-feedback {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #4caf50;
+}
+/* Ensure button can position spinner */
+.submit-btn {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  background-color: maroon;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide text when loading */
+.submit-btn--loading .button__text {
+  opacity: 0;
+}
+
+/* Spinner */
+.submit-btn--loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+/* Disable click while loading */
+.submit-btn--loading {
+  pointer-events: none;
+}
+
+/* Animation */
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}

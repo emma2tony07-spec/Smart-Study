@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <title>Smart Study Dashboard</title>
+</head>
+<body>
+
+  <!-- Add Course Button -->
+  <button class="add-course" id="open-add-dialog">+ Add New Course</button>
+  <button class="analytics-button"><i class="fas fa-chart-simple"></i></button>
+
+  <div class="analytics-overlay" id="analyticsOverlay"></div>
+
+  <div class="analytics-menu" id="analyticsMenu">
+    <div class="analytics-menu-content">
+      <h2>Analytics Dashboard</h2>
+      <div class="analytics-stats">
+        <p>Total Courses: 5</p>
+        <p>Completed: 2</p>
+        <p>In Progress: 3</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="courses-container"></div>
+
+  <!-- Add Course Dialog -->
+  <dialog class="dialog" id="add-dialog">
+    <i class="fas fa-times close-icon" id="close-add-dialog"></i>
+
+    <label for="c-name">Course Name</label>
+    <input type="text" id="c-name" class="dialog-input" required>
+
+    <label for="c-files">Course Material (.txt only)</label>
+    <input type="file" id="c-files" class="dialog-input" accept=".txt" required>
+
+    <label for="c-datetime">Schedule reading time</label>
+    <input type="datetime-local" id="c-datetime" class="dialog-input" required>
+
+    <!-- ✅ Wrapped text inside span -->
+    <button type="submit" id="submit-course" class="submit-btn">
+      <span class="button__text">Save Course</span>
+    </button>
+  </dialog>
+
+  <!-- Course Details Dialog -->
+  <dialog class="dialog course-dialog" id="course-dialog">
+    <i class="fas fa-times close-icon" id="close-course-dialog"></i>
+    <h3 id="course-dialog-title">Course</h3>
+    <div id="chapters-list" class="chapters-container"></div>
+
+    <div id="summary-section" class="summary-section" style="display: none;">
+      <h4>AI Summary</h4>
+      <div id="summary-text" class="summary-text"></div>
+
+      <h4>Practice Questions</h4>
+      <div id="questions-text" class="questions-text"></div>
+
+      <textarea id="answer-input" placeholder="Type your answer here..." rows="3"></textarea>
+
+      <!-- ✅ Wrapped text inside span -->
+      <button id="submit-answer" class="submit-btn">
+        <span class="button__text">Submit Answer</span>
+      </button>
+
+      <div id="answer-feedback"></div>
+    </div>
+  </dialog>
+
+  <script src="scripts/script.js"></script>
+
+</body>
+</html>
