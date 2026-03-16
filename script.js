@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const API_BASE = "https://smart-study-backend-uijl.onrender.com";
+  const API_BASE = "https://smart-study-backend-uijl.onrender.com/";
 
   const coursesContainer = document.getElementById('courses-container');
   const addDialog = document.getElementById('add-dialog');
